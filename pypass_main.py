@@ -3,15 +3,20 @@ import sqlite3
 import secrets
 from pypass_functions import *
 
-# generates master.key and salt.key to hash and salt master password if 
-if not os.path.exists('master.key') and not os.path.exists('salt.key'):
+db_path = 'passwords.db' # path where db is stored, defaults to inside project folder
+
+# generates master.key and salt.key to store hashed and salted master password and unique salt
+if not os.path.exists('master.key') or not os.path.exists('salt.key'):
     master_file = open('master.key', 'wb')
     salt_file = open('salt.key', 'wb')
-    hash_pass, salt = hash_salt_pass(input("Enter a master password for your vault\n:"))
+    hash_pass, salt = hash_salt_pass(input("Create a master password for your vault\n:"))
     master_file.write(hash_pass)
     salt_file.write(salt)
     master_file.close()
     salt_file.close()
+# if master password is reset (i.e. master.key or salt.key are deleted) then passwords.db is deleted 
+    if os.path.exists(db_path):
+        os.remove(db_path)
 
 # validates master_pass, if invalid quits
 master_pass = input("Enter master password\n:")
@@ -20,7 +25,6 @@ if not check_hash_pass(open('master.key', 'rb').readline(), open('salt.key', 'rb
     quit()
 
 # setup sqlite3 db
-db_path = '/Users/Oscar/sqlite/db/passwords.db' # set as path where db should be stored
 conn = sqlite3.connect(db_path)
 c = conn.cursor()
 c.execute("CREATE TABLE IF NOT EXISTS vault (service TEXT PRIMARY KEY, user TEXT, password TEXT, salt BLOB, iv BLOB)")
