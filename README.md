@@ -6,7 +6,7 @@ PyPass is a command line password manager. Your PyPass vault is unlocked with a 
 
 Demo of PyPass being run
 
-<img src="https://s7.gifyu.com/images/pypass-demo.gif" width="1000" height="519">
+<img src="https://s7.gifyu.com/images/pypass-demo.gif" width="750" height="390">
 <!-- ![pypass-demo.gif](https://s7.gifyu.com/images/pypass-demo.gif) -->
 
 ## Prerequisites
