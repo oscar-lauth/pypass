@@ -1,6 +1,13 @@
 # PyPass
 
-PyPass is a command line password manager. Your PyPass vault is unlocked with a master password you create when first running the application. Your master password is hashed and salted and stored in git push 
+PyPass is a command line password manager. Your PyPass vault is unlocked with a master password you create when first running the application. Your master password is hashed and salted with SHA-512. Passwords you add to your PyPass vault are stored in an sqlite3 database and each password is encrypted with AES encryption.
+
+## Demo
+
+Demo of PyPass being run
+
+<img src="https://s7.gifyu.com/images/pypass-demo.gif" width="" height="">
+<!-- ![pypass-demo.gif](https://s7.gifyu.com/images/pypass-demo.gif) -->
 
 ## Prerequisites
 
