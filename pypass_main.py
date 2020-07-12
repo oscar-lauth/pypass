@@ -20,11 +20,10 @@ if not os.path.exists('master.key') or not os.path.exists('salt.key'):
 
 # validates master_pass, if invalid quits
 master_pass = input("Enter master password\n:")
-if not check_hash_pass(open('master.key', 'rb').readline(), open('salt.key', 'rb').readline(), master_pass):
+if not check_hash_pass(open('master.key', 'rb').read(), open('salt.key', 'rb').read(), master_pass):
     print("Invalid master password\nQuitting PyPass")
     quit()
 
-# setup sqlite3 db
 conn = sqlite3.connect(db_path)
 c = conn.cursor()
 c.execute("CREATE TABLE IF NOT EXISTS vault (service TEXT PRIMARY KEY, user TEXT, password TEXT, salt BLOB, iv BLOB)")
