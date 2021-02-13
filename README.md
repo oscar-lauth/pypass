@@ -84,9 +84,3 @@ After quitting PyPass with the **qp** command, be sure to deactivate the venv
 ## Authors
 
 * **Oscar Lauth** - *All work* - [oscar-lauth](https://github.com/oscar-lauth)
-
-## Liability?
-
-* Any liability statemnt
-Maybe regarding security and encryption
-
